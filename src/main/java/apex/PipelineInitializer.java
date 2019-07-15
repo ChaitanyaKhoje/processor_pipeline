@@ -29,7 +29,9 @@ public class PipelineInitializer {
         PipelineManager.executeDiv3 = new Stage();
         PipelineManager.executeDiv4 = new Stage();
         PipelineManager.memory = new Stage();
-        PipelineManager.writeback = new Stage();
+        //PipelineManager.memory2 = new Stage();
+        //PipelineManager.memory3 = new Stage();
+        PipelineManager.issueQueueStage = new Stage();
     }
 
     /**
@@ -64,14 +66,14 @@ public class PipelineInitializer {
      */
     private void initRegisters() {
 
-
         for (int j = 0; j < 16; j++) {
             Register register = new Register(0, j, false, "R" + j);
             RegisterFile.registerMap.put("R" + j, register);
+            RegisterFile.registerAddressMap.put(j, register);
         }
 
         for (int k = 0; k < 32; k++) {
-            PhysicalRegister physicalRegister = new PhysicalRegister(0, k, "P" + k,false,false);
+            PhysicalRegister physicalRegister = new PhysicalRegister(0, k, "P" + k,false,false,false);
             PhysicalRegisterFile.physicalRegistersList.add(physicalRegister);
         }
     }

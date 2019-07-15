@@ -23,6 +23,29 @@ public class Register extends Source {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Register)) return false;
+
+        Register register = (Register) o;
+
+        if (getAddress() != register.getAddress()) return false;
+        if (isStatus() != register.isStatus()) return false;
+        if (isForwarded() != register.isForwarded()) return false;
+        return getName().equals(register.getName());
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getAddress();
+        result = 31 * result + (isStatus() ? 1 : 0);
+        result = 31 * result + getName().hashCode();
+        result = 31 * result + (isForwarded() ? 1 : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Register{" +
                 "address=" + address +

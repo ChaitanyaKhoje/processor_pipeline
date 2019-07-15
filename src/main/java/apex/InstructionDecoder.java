@@ -18,7 +18,7 @@ public class InstructionDecoder {
             return instructionInfo;
         }
 
-        instructionInfo.resetIntructionStageFlags();
+        instructionInfo.resetInstructionStageFlags();
         // instructionString will be in format ADD R0, R1, R2 or ADD R0, R1, #10
         String instructionString = instructionInfo.getInstruction();
         String[] instructionTokens = instructionString.split(",| ", 2);
@@ -35,9 +35,6 @@ public class InstructionDecoder {
         String[] operands = instructionTokens[1].replace(" ", "").split(",");
 
         // Set waiting register variables which will be used while data forwarding.
-
-
-
 
         instructionInfo.setInstructionDecoded(true);
 
@@ -267,6 +264,17 @@ public class InstructionDecoder {
             if (r != null) {
                 r.setStatus(true);
                 RegisterFile.setUnsetRegister(r, true);
+            }
+        }
+    }
+
+    public static void setPhysicalRegisters(InstructionInfo outputInstruction) {
+        if (outputInstruction != null) {
+            PhysicalRegister pr = outputInstruction.getDestPhysicalRegister();
+
+            if (pr != null) {
+                pr.setStatus(true);
+                RegisterFile.setUnsetRegister(pr, true);
             }
         }
     }

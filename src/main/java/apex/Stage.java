@@ -55,6 +55,20 @@ public class Stage {
         return sources;
     }
 
+    public static List<Source> getAllRegistersForIssueQueue(InstructionInfo instruction) {
+        Source source1 = instruction.getSource1();
+        Source source2 = instruction.getSource2();
+        Source source3 = instruction.getSource3();
+        Register destination = instruction.getDestinationRegister();
+
+        List<Source> sources = new ArrayList<Source>();
+        sources.add(source1);
+        sources.add(source2);
+        sources.add(source3);
+        sources.add(destination);
+        return sources;
+    }
+
     /**
      * Returns a list of all the sources (Registers and literals) for the instruction.
      * For eg. ADD R1, R2, R3 will return a list of [R1, R2, R3]

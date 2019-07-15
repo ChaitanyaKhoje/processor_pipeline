@@ -6,6 +6,8 @@ import java.util.Map;
 public class RegisterFile {
 
     public static Map<String, Register> registerMap = new HashMap<String, Register>();
+    public static Map<Integer, Register> registerAddressMap = new HashMap<Integer, Register>();
+
 
     public static String getRegisterValues() {
         StringBuilder sb = new StringBuilder();
@@ -22,6 +24,7 @@ public class RegisterFile {
             Register r = (Register) register;
             r.setStatus(status);
             registerMap.put(r.getName(), r);
+            registerAddressMap.put(r.getAddress(), r);
         }
     }
 }

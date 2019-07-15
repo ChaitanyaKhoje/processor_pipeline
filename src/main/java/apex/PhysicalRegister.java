@@ -1,27 +1,17 @@
 package main.java.apex;
 
-public class PhysicalRegister {
+public class PhysicalRegister extends Register {
 
-    private int value;
-    private int address;
-    private String name;
+    // MOV R0, #1 -> MOV P0, #1 ----Rename table: R0 -> P0
+    // ADD R0, R0, #1 -> ADD P1, P0, #1  ----Rename table: R0 -> P1
+    // ADD R1, R0, P2 ->
     private boolean isRenamed;
     private boolean isAllocated;
 
-    public PhysicalRegister(int value, int address, String name, boolean isRenamed, boolean isAllocated) {
-        this.value = value;
-        this.address = address;
-        this.name = name;
+    public PhysicalRegister(int value, int address, String name, boolean isRenamed, boolean isAllocated, boolean status) {
+        super(value, address, status, name);
         this.isRenamed = isRenamed;
         this.isAllocated = isAllocated;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
-    public void setValue(int value) {
-        this.value = value;
     }
 
     public boolean isRenamed() {
@@ -42,26 +32,9 @@ public class PhysicalRegister {
 
     @Override
     public String toString() {
-        return "PhysicalRegister{" +
-                "value=" + value +
-                ", address=" + address +
-                ", name='" + name + '\'' +
+        return super.toString() + "PhysicalRegister{" +
+                "isRenamed=" + isRenamed +
+                ", isAllocated=" + isAllocated +
                 '}';
-    }
-
-    public int getAddress() {
-        return address;
-    }
-
-    public void setAddress(int address) {
-        this.address = address;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

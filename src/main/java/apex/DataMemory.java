@@ -1,7 +1,7 @@
 package main.java.apex;
 
 /**
- * This is data memory where each 4 consecutive locations in the array are occupied by a value.
+ * This is data memory1 where each 4 consecutive locations in the array are occupied by a value.
  */
 public class DataMemory {
     public static int[] data_array = new int[4000];
